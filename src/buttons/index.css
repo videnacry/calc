@@ -1,0 +1,86 @@
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+.buttons > .left-panel {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.buttons > .left-panel > .clean-screen {
+    min-width: 20px;
+    width: 40px;
+    height: 38px;
+    min-height: 20px;
+    margin-top: 6px;
+    border: solid 1px rgba(60, 60, 60, 60.7);
+    border-radius: 46%;
+    box-shadow: inset 1px 1px rgba(210, 210, 210, 0.6),
+    inset -1px -1px rgba(60, 60, 60, 0.3),
+    1px 2px 2px rgba(30, 30, 30, 0.5);
+    background-color: var(--cleanbtn);
+    color: var(--cleantxt)
+}
+.buttons > .left-panel > .numbers {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.buttons > .left-panel > .numbers > .delete {
+    position: relative;
+    min-width: 20px;
+    width: 40px;
+    height: 38px;
+    min-height: 20px;
+    margin-top: 6px;
+    border: solid 1px rgba(60, 60, 60, 60.7);
+    border-radius: 46%;
+    box-shadow: inset 1px 1px rgba(200, 200, 200, 0.2),
+    inset -1px -1px rgba(60, 60, 60, 0.3),
+    1px 2px 2px rgba(30, 30, 30, 0.6),
+    inset 0px 18px 42px rgba(0, 0, 0, 0.3);
+    background-color: var(--deletebtn);
+    color: var(--deletetxt)
+}
+.buttons > .left-panel > .numbers > .delete > span:nth-of-type(1), .buttons > .left-panel > .numbers > .delete > span:nth-of-type(2) {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+}
+.buttons > .left-panel > .numbers > .delete > span:nth-of-type(1) {
+    width: 7px;
+    height: 7px;
+    border-left: 1px solid var(--deletetxt);
+    border-bottom: 1px solid var(--deletetxt);
+    transform: translate(10px, -50%) rotate(45deg);
+}
+.buttons > .left-panel > .numbers > .delete > span:nth-of-type(2) {
+    width: 12px;
+    height: 10px;    
+    border-top: 1px solid var(--deletetxt);
+    border-right: 1px solid var(--deletetxt);
+    border-bottom: 1px solid var(--deletetxt);
+    transform: translate(14px, -50%);
+}
+.buttons > .operations {
+    width: 25%;
+    padding-left: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.buttons > .operations > .resolve {
+    min-width: 20px;
+    width: 40px;
+    height: 76px;
+    min-height: 20px;
+    margin-top: 6px;
+    border: solid 1px rgba(60, 60, 60, 60.7);
+    border-radius: 20px;
+    box-shadow: inset 1px 1px rgba(200, 200, 200, 0.2),
+    inset -1px -1px rgba(60, 60, 60, 0.3),
+    1px 2px 2px rgba(30, 30, 30, 0.6);
+    background-color: var(--resolvebtn);
+    color: var(--resolvetxt)
+}
