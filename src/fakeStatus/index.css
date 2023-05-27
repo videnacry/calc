@@ -1,0 +1,76 @@
+.fake-status {
+    display: flex;
+    justify-content: space-between;
+}
+.fake-status > .date-time {
+    color: var(--numtxt);
+    font-size:10px;
+    font-weight: bold;
+}
+.fake-status > .status {
+    width: 60px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+.fake-status > .status > .signal {
+    width: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.fake-status > .status > .signal > span {
+    width: 14%;
+    background-color: var(--numtxt);
+}
+.fake-status > .status > .signal > span:nth-of-type(1) {
+    height: 25%;
+}
+.fake-status > .status > .signal > span:nth-of-type(2) {
+    height: 50%;
+}
+.fake-status > .status > .signal > span:nth-of-type(3) {
+    height: 75%;    
+}
+.fake-status > .status > .signal > span:nth-of-type(4) {
+    height: 100%;    
+}
+.fake-status > .status > .wifi , .fake-status > .status > .wifi > span, .fake-status > .status > .wifi > span > span {
+    border-radius: 50%;
+}
+.fake-status > .status > .wifi {
+    position: relative;
+    width: 12px;
+    height: 100%;
+    border-top: solid 3px var(--numtxt);
+}
+.fake-status > .status > .wifi > span, .fake-status > .status > .wifi > span > span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.fake-status > .status > .wifi > span {
+    width: 8px;
+    height: 50%;
+    border-top: solid 2px var(--numtxt);
+}
+.fake-status > .status > .wifi > span > span {
+    width: 3px;
+    height: 30%;
+    background-color: var(--numtxt);
+}
+.fake-status > .status > .batery {
+    box-sizing: border-box;
+    height: 100%;
+    width: 20px;
+    border-radius: 2px;
+    border: solid 1px var(--numtxt);
+    padding: 2px 1px;
+}
+.fake-status > .status > .batery > span {
+    display: block;
+    height: 100%;
+    border-radius: 1px;
+    background-color: var(--numtxt);
+}
