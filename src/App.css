@@ -1,38 +1,46 @@
+:root {
+  --numtxt: lightgray;
+  --numbg: rgba(100, 100, 100, 0.3);
+  --optxt: rgb(255, 187, 247);
+  --opbg: rgba(199, 33, 255, 0.3);
+  --darkgray: rgb(79, 79, 79);
+  --lightdark: rgb(66, 66, 66);
+  --dark: rgb(50, 50, 50);
+  --darkdark: rgb(30, 30, 30);
+  --deletebtn: rgb(60, 60, 60, 0.8);
+  --deletetxt: rgb(139, 139, 139);
+  --cleanbtn: rgba(255, 225, 0, 0.575);
+  --cleantxt: lightgoldenrodyellow;
+  --resolvebtn: rgba(199, 33, 255, 0.3);
+  --resolvetxt: rgb(255, 187, 247);
+}
+
+button {
+  border: none;
+}
+.button:target {
+  border: none;
+}
+.button:active {
+  border: none;
+}
+
 .App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark);
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.calc {
+  width: 180px;
+  border-radius: 20px;
+  padding: 10px 14px ;
+  background-color: var(--lightdark);
+  box-shadow: 1px 1px 10px var(--darkdark),
+  0px 0px 1px var(--darkdark),
+  inset 0em 8em 8em rgba(203, 203, 203, 0.2),
+  inset 0em -4em 8em rgba(24, 24, 24, 0.8);
 }
