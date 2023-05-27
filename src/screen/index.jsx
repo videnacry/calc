@@ -1,0 +1,17 @@
+import './index.css'
+
+const Index = ({history:[first="",second="",third="",fourth=""], operationString=""}) => {
+    return (
+        <div className='screen'>
+            <p className='history'>
+                <span>{fourth}</span>
+                <span>{third}</span>
+                <span>{second}</span>
+                <span>{first}</span>
+            </p>
+            <div className='current'>{operationString}</div>
+        </div>
+    )
+}
+
+export default Index
