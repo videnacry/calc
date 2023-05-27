@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 
+import "./index.css"
+import FakeStatus from './fakeStatus'
+import Screen from './screen'
+import Buttons from './buttons'
+import React from 'react';
+
+import {calcInitialState, calcReducer, actions } from './calc';
+
 function App() {
+  const [state, dispatch] = React.useReducer(calcReducer, calcInitialState)
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='calc'>
+        <FakeStatus />
+        <Screen history={state.history} operationString={state.operationString}/>
+        <Buttons dispatch={dispatch} actions={actions}/>
+      </div>
     </div>
   );
 }
