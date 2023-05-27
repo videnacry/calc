@@ -9,7 +9,6 @@ const getOperationMaxPriority = (elements) => {
     let operationMaxPriority = undefined
     elements.forEach(element => {
         if (typeof element == 'object') {
-            console.log(element)
             operationMaxPriority = (element.priority < operationMaxPriority) ? operationMaxPriority : element.priority
         }
     });
@@ -29,6 +28,12 @@ const getOperationString = (elements) => {
 
 const dispatcher = {
     addChar: (state, newChar) => {
+        if (state.operation.length == 0 && typeof newChar == 'object') {
+            return {...state, errorMsg: 'Operation sign at the start of an operation is not supported'}
+        }
+        if (typeof state.operation[state.operation.length - 1] == 'object' && typeof newChar == 'object') {
+            return {...state, errorMsg: 'Operation sign after an operation sign is not supported'}
+        }
         let operation 
         const lastChar = state.operation[state.operation.length-1]
         if (typeof lastChar == 'string' && typeof newChar == 'string') {
@@ -37,7 +42,7 @@ const dispatcher = {
             operation = [...state.operation, newChar]
         }
         const operationString = getOperationString(operation)
-        return {...state, operation, operationString}
+        return {...state, operation, operationString, errorMsg: ''}
     },
     removeChar: (state) => {
         const lastChar = state.operation[state.operation.length-1]
@@ -46,18 +51,21 @@ const dispatcher = {
             operation = [...operation, lastChar.substring(0, lastChar.length-1)]
         }
         const operationString = getOperationString(operation)
-        return {...state, operation, operationString}
+        return {...state, operation, operationString, errorMsg: ''}
     },
     removeAllChars: (state) => {
-        return {...state, operation: [], operationString: ''}
+        return {...state, operation: [], operationString: '', errorMsg: ''}
     },
     resolve: (state) => {
+        if (typeof state.operation[state.operation.length - 1] == 'object') {
+            return {...state, errorMsg: 'Operation sign at the end of an operation is not supported'}
+        }
         let operationMaxPriority = getOperationMaxPriority(state.operation)
         let operation = [...state.operation]
         let index = 0
         while (index < operation.length) {
             if (typeof operation[index] != 'string' && operation[index].priority == operationMaxPriority) {
-                const result = operation[index].resolve(operation[index-1], operation[index+1])
+                const result = operation[index].resolve(Number(operation[index-1]), Number(operation[index+1]))
                 const nextChars = operation.slice(index+2)
                 operation = (nextChars.length > 0)? [...operation.slice(0, index-1), result, ...nextChars] : [...operation.slice(0, index-1), result]
                 index--
@@ -65,20 +73,20 @@ const dispatcher = {
             index++
             if (index == operation.length) {
                 operationMaxPriority = getOperationMaxPriority(operation)
-                console.log(operation)
                 if (operationMaxPriority >= 0) index = 0
             }
         }
         const history = [state.operationString, ...state.history]
         const operationString = operation[0]
-        return {history, operationString, operation:[]}
+        return {history, operationString, operation:[], errorMsg: ''}
     }
 }
 
 export const calcInitialState = {
     history: [],
     operation: [],
-    operationString: ''
+    operationString: '',
+    errorMsg: ''
 }
 
 export const calcReducer = (state, payload) => dispatcher[payload.action](state, payload.value||'')

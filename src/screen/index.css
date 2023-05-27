@@ -30,3 +30,7 @@
     font-size: 26px;
     font-weight: bold;
 }
+.screen > .error {
+    font-size: 10px;
+    line-height: 10px;
+}

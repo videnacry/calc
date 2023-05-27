@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <div className='calc'>
         <FakeStatus />
-        <Screen history={state.history} operationString={state.operationString}/>
+        <Screen history={state.history} operationString={state.operationString} errorMsg={state.errorMsg}/>
         <Buttons dispatch={dispatch} actions={actions}/>
       </div>
     </div>
